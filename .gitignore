@@ -1,0 +1,56 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Environment variables
+.env
+.env.*    # .env.test, .env.production etc.
+
+# Build outputs
+dist/
+build/
+coverage/
+.tmp/
+.cache/
+
+# Logs
+logs/
+*.log
+*.log.*
+*.out
+*.pid
+*.seed
+*.gz
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE configs
+.vscode/
+.idea/
+*.swp
+
+# Docker
+docker-compose.override.yml
+*.local.yml
+
+# React specific
+*.tsbuildinfo
+*.eslintcache
+
+# Sentry / monitoring dumps
+*.dmp
+
+# Misc
+*.tgz
