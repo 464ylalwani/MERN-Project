@@ -7,7 +7,7 @@ const asyncHandler = require("../utils/asyncHandler");
 // @access  Admin / Instructor
 exports.createProduct = asyncHandler(async (req, res) => {
   const product = await Product.create({ ...req.body, user: req.user.id });
-  // 🔥 wrap in object so test receives { product: {...} }
+  // wrapping in object so test receives { product: {...} }
   res.status(201).json({ product });
 });
 

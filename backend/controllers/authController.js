@@ -9,9 +9,7 @@ const signAccess = (payload) =>
 const signRefresh = (payload) =>
   jwt.sign(payload, JWT_REFRESH_SECRET, { expiresIn: "7d" });
 
-/**
- * Register
- */
+// Register
 exports.register = asyncHandler(async (req, res) => {
   const { name, email, password, role } = req.body;
   const user = await User.create({ name, email, password, role });
@@ -24,9 +22,7 @@ exports.register = asyncHandler(async (req, res) => {
   });
 });
 
-/**
- * Login
- */
+// Login
 exports.login = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
@@ -49,9 +45,7 @@ exports.login = asyncHandler(async (req, res) => {
   });
 });
 
-/**
- * Refresh
- */
+// Refresh
 exports.refresh = asyncHandler(async (req, res) => {
   // handle both body key & cookie
   const token =
@@ -74,9 +68,7 @@ exports.refresh = asyncHandler(async (req, res) => {
   }
 });
 
-/**
- * Logout
- */
+// Logout
 exports.logout = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user.id);
   if (!user) return res.status(404).json({ message: "User not found" });
@@ -87,9 +79,7 @@ exports.logout = asyncHandler(async (req, res) => {
   res.json({ message: "Logged out (refresh tokens invalidated)" });
 });
 
-/**
- * Me
- */
+// Me
 exports.me = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user.id).select(
     "-password -tokenVersion"

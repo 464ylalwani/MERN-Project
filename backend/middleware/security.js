@@ -15,7 +15,7 @@ module.exports = (app) => {
 
   const corsOptions = {
     origin: function (origin, cb) {
-      if (!origin) return cb(null, true); // Postman / curl ke liye
+      if (!origin) return cb(null, true);
       if (allowedOrigins.includes(origin)) return cb(null, true);
       return cb(new Error("CORS blocked: " + origin));
     },
@@ -25,7 +25,7 @@ module.exports = (app) => {
   };
 
   app.use(cors(corsOptions));
-  app.options("*", cors(corsOptions)); // same config used
+  app.options("*", cors(corsOptions));
 
   // Rate limiters
   app.use("/api/auth/login", rateLimit({ windowMs: 15 * 60 * 1000, max: 10 }));

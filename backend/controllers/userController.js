@@ -10,7 +10,7 @@ exports.getUsers = asyncHandler(async (req, res) => {
     .search(["name", "email"])
     .filter()
     .sort()
-    .paginate(); // QueryHelper already handles skip & limit
+    .paginate();
 
   const users = await features.query;
   const count = await User.countDocuments(); // total users

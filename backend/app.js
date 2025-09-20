@@ -1,4 +1,3 @@
-// backend/app.js
 const express = require("express");
 const { MONGO_URI } = require("./config");
 const security = require("./middleware/security");
@@ -19,7 +18,7 @@ app.use("/api", authRoutes);
 app.use("/api", userRoutes);
 app.use("/api", productRoutes);
 
-// Error handler (keep last)
+// Error handler
 app.use(errorHandler);
 
 module.exports = app;
