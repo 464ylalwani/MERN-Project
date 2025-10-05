@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 5000;
 mongoose
   .connect(MONGO_URI)
   .then(() => {
-    console.log("DB connected:", MONGO_URI);
+    console.log("DB connected:", MONGO_URI); // if on localhost, then mongodb://localhost:27017/your_db_name_here
     app.listen(PORT, () => {
       console.log(`Server running on ${PORT}`);
       swaggerDocs(app, PORT);

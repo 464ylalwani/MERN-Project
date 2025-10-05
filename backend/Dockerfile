@@ -1,20 +1,15 @@
-# Step 1: Use Node.js base image
-FROM node:18
-
-# Step 2: Set working directory
+# Stage 1: Build Stage
+FROM node:18 AS builder
 WORKDIR /app
-
-# Step 3: Copy package.json & package-lock.json
 COPY package*.json ./
-
-# Step 4: Install dependencies
-RUN npm install --production
-
-# Step 5: Copy all source code
+RUN npm install
 COPY . .
 
-# Step 6: Expose backend port
-EXPOSE 5000
+# Stage 2: Production Stage
+FROM node:18
+WORKDIR /app
+COPY --from=builder /app ./
+RUN npm prune --production
 
-# Step 7: Start the server
+EXPOSE 5000
 CMD ["npm", "start"]
